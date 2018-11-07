@@ -1,0 +1,12 @@
+﻿Komodo Insurance is wanting to create a console application 
+that allows a user to register their vehicle. Komodo insurance 
+needs to know the user's information:
+(age, first name, last name, address)
+Once Komodo has registered the user,
+the user will register their car.
+Komodo Insurance needs to know the car's specs:
+(brand(honda etc.), 
+model(civic, camry etc.), make year, owner(tie to person object)).
+Make a person class and a car class.
+Allow the user to update information.
+Bonus Store multiple owned vehicles to one person object. 

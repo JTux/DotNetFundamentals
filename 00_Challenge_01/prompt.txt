@@ -1,0 +1,21 @@
+﻿
+Komodo would like an app that allows a user to register for car
+insurance. The app should be able to take in a name, age, and 
+information about their vehicle. Komodo wants to charge them $75 
+if they are over twenty-five and $125 if they are under. 
+
+They also would like a menu that lets the user choose to register,
+see their information, update their information, or exit the
+program.
+    
+Bonus: Komodo would also like to increase the charge based on 
+the car's mileage and whether or not they have had an accident.
+If the car is over 50,000 miles add $25, if it is over 100,000 
+miles add $50.
+
+register
+name
+age
+information
+
+menu
