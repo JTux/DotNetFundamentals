@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using _07_Repository_Method_Example_01;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -46,6 +47,25 @@ namespace _07_Repository_Method_Example_01_Tests
             //-- Act
             string actual = content.Genre;
             string expected = "genre";
+
+            //-- Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void StreamingContentRepository_AddContentToList_IsCorrectCount()
+        {
+            //-- Arrange
+            StreamingContentRepository repo = new StreamingContentRepository();
+
+            repo.AddContentToList(new StreamingContent("title", "genre", 2, true));
+
+            List<StreamingContent> testList = repo.GetContentList();
+            int count = testList.Count;
+
+            //-- Act
+            var expected = 1;
+            var actual = testList.Count;
 
             //-- Assert
             Assert.AreEqual(expected, actual);
