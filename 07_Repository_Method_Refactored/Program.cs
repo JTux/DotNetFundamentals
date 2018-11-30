@@ -10,7 +10,7 @@ namespace _07_Repository_Method_Refactored
     {
         static void Main(string[] args)
         {
-            ProgramUI program = new ProgramUI();
+            ProgramUI program = new ProgramUI(new RealConsole());
             program.Run();
         }
     }

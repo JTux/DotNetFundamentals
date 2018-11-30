@@ -61,6 +61,7 @@ namespace _07_Repository_Method_Example_01_Tests
             repo.AddContentToList(new StreamingContent("title", "genre", 2, true));
 
             List<StreamingContent> testList = repo.GetContentList();
+            testList.Sort((x,y) => string.Compare(x.Title, y.Title));
             int count = testList.Count;
 
             //-- Act

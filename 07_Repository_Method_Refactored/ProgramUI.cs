@@ -8,9 +8,11 @@ namespace _07_Repository_Method_Refactored
         List<StreamContent> allShows;
         User newPerson;
         StreamContentRepository showRepo;
+        IConsole _console;
 
-        public ProgramUI()
+        public ProgramUI(IConsole console)
         {
+            _console = console;
             allShows = new List<StreamContent>();
             newPerson = new User();
             showRepo = new StreamContentRepository(newPerson);
@@ -27,15 +29,15 @@ namespace _07_Repository_Method_Refactored
             bool addingShows = true;
             while (addingShows)
             {
-                Console.Clear();
-                Console.WriteLine("What would you like to do?" +
+                _console.Clear();
+                _console.WriteLine("What would you like to do?" +
                     "\n1. Register new show/movie" +
                     "\n2. Add show to list" +
                     "\n3. See your playlist" +
                     "\n4. See all available shows" +
                     "\n5. Exit");
 
-                int input = int.Parse(Console.ReadLine());
+                int input = int.Parse(_console.ReadLine());
                 switch (input)
                 {
                     case 1:
@@ -54,8 +56,8 @@ namespace _07_Repository_Method_Refactored
                         addingShows = false;
                         break;
                     default:
-                        Console.WriteLine("Invalid input");
-                        Console.ReadLine();
+                        _console.WriteLine("Invalid input");
+                        _console.ReadLine();
                         break;
                 }
             }
@@ -64,73 +66,73 @@ namespace _07_Repository_Method_Refactored
         private void RegisterStreamContent()
         {
             StreamContent newShow = new StreamContent();
-            Console.WriteLine("Is this a show or movie?");
-            if (Console.ReadLine().ToLower() == "show")
+            _console.WriteLine("Is this a show or movie?");
+            if (_console.ReadLine().ToLower() == "show")
                 newShow.IsShow = true;
 
-            Console.Write("Enter the title: ");
-            newShow.Title = Console.ReadLine();
+            _console.Write("Enter the title: ");
+            newShow.Title = _console.ReadLine();
 
-            Console.Write("Enter the rating (0.0 - 10.0)");
-            newShow.Rating = double.Parse(Console.ReadLine());
+            _console.Write("Enter the rating (0.0 - 10.0)");
+            newShow.Rating = double.Parse(_console.ReadLine());
 
-            Console.Write("Enter the Genre: ");
-            newShow.Genre = Console.ReadLine();
+            _console.Write("Enter the Genre: ");
+            newShow.Genre = _console.ReadLine();
 
             allShows.Add(newShow);
-            Console.WriteLine($"{newShow.Title} registered.");
-            Console.ReadLine();
+            _console.WriteLine($"{newShow.Title} registered.");
+            _console.ReadLine();
         }
 
         private void AddToPlaylist()
         {
-            Console.Clear();
+            _console.Clear();
             if (allShows.Count > 0)
             {
-                Console.WriteLine("Which movie/show would you like to add to your list?");
+                _console.WriteLine("Which movie/show would you like to add to your list?");
 
                 int count = 0;
                 foreach (StreamContent show in allShows)
                 {
                     count++;
-                    Console.WriteLine($"{count}. {show.Title}");
+                    _console.WriteLine($"{count}. {show.Title}");
                 }
 
-                int choice = int.Parse(Console.ReadLine());
+                int choice = int.Parse(_console.ReadLine());
                 showRepo.AddShowToList(allShows[(choice - 1)]);
             }
             else
             {
-                Console.WriteLine("No registered shows/movies.");
+                _console.WriteLine("No registered shows/movies.");
             }
-            Console.ReadLine();
+            _console.ReadLine();
         }
 
         private void ViewPlaylist()
         {
             foreach (StreamContent show in newPerson.Playlist)
             {
-                Console.WriteLine(show.Title);
+                _console.WriteLine(show.Title);
             }
-            Console.ReadLine();
+            _console.ReadLine();
         }
 
         private void ViewAllShows()
         {
             foreach (StreamContent show in allShows)
             {
-                Console.WriteLine(show.Title);
+                _console.WriteLine(show.Title);
             }
-            Console.ReadLine();
+            _console.ReadLine();
         }
 
         private void RegisterUser()
         {
-            Console.Write("Enter your name: ");
-            newPerson.Name = Console.ReadLine();
+            _console.Write("Enter your name: ");
+            newPerson.Name = _console.ReadLine();
 
-            Console.Write("Enter your age: ");
-            newPerson.Age = int.Parse(Console.ReadLine());
+            _console.Write("Enter your age: ");
+            newPerson.Age = int.Parse(_console.ReadLine());
         }
     }
 }
